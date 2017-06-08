@@ -7,7 +7,7 @@
 		public function login(){
 			$loginModel = new loginModel();
 			if($loginModel -> authenticate($_POST['username'])){
-				$loginModel -> loginSuccess();
+				$loginModel -> loginSuccess($_POST['username']);
 			}else{
 				(new LoginView()) -> output();
 				$loginModel -> loginFailed();
@@ -17,7 +17,7 @@
 		public function register(){
 			$loginModel = new loginModel();
 			if($loginModel -> register($_POST['newuser'])){
-				$loginModel -> loginSuccess();
+				$loginModel -> loginSuccess($_POST['newuser']);
 			}
 		}
 	}
