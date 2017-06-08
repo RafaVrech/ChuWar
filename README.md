@@ -1,3 +1,2 @@
 # ChuWar
-Exercício War PHPa
-teste
+Exercício War PHP
