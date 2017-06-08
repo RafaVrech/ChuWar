@@ -51,16 +51,17 @@
 		    return $statement -> execute();
 	 	}
 
-	 	public function loginSuccess(){
-			header("Location:ChuWar.php");
+	 	public function loginSuccess($username){ 		
+	 		$_SESSION['username'] = $username;	
+			header("Refresh:0.25");
 			exit;
 		}
 
 		public function loginFailed(){
 			
-			echo 'Usuário não encontrado. 
+			echo '
 					<form action="" method="post">
-				 		<button type="submit" name="newuser" value="'.$_POST['username'].'" >Iniciar novo jogo como "'.$_POST['username'].'"?</button>
+				 		<button type="submit" name="newuser" value="'.$_POST['username'].'" >Iniciar novo jogo como "'.$_POST['username'].'"</button>
 					</form>
 			';
 			exit;
