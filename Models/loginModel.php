@@ -20,8 +20,8 @@
 
 		}
 
-		private function getFromDB($user){
-			$pdo = new PDO('mysql:host=localhost;dbname=ChuWar', 'root', '');
+		public function getFromDB($user){
+			$pdo = new PDO('mysql:host=localhost;dbname=ChuWar', DBuser, DBpassword);
  
 		    $query = 'SELECT * FROM users WHERE username=:username';
 		 
@@ -31,8 +31,6 @@
 		 
 		    $userArr = $statement->fetch(PDO::FETCH_ASSOC);
 
-		    $pdo = null;
-
 		 	if(isset($userArr['username'])){
 				return $userArr;
 		 	}else{
@@ -41,18 +39,23 @@
 	 	}
 
 	 	private function insertDB($user){
- 			$pdo = new PDO('mysql:host=localhost;dbname=ChuWar', 'root', '');
+ 			$pdo = new PDO('mysql:host=localhost;dbname=ChuWar', DBuser, DBpassword);
  
 		    $query = 'INSERT INTO users (username) VALUES (:username)';
 		 
 		    $statement = $pdo -> prepare($query);
-		    $pdo = null;
+
 		    $statement -> bindValue(":username",$user);
 		    return $statement -> execute();
 	 	}
 
-	 	public function loginSuccess($username){ 		
+	 	public function loginSuccess($username){ 
+	 		$arr = $this -> getFromDB($username);	
 	 		$_SESSION['username'] = $username;	
+	 		$_SESSION['domain'] = utf8_encode($arr['domain']);	
+	 		$_SESSION['botDomain'] = utf8_encode($arr['botDomain']);	
+	 		$_SESSION['botName'] = utf8_encode($arr['botName']);
+	 		?> <pre><?php echo var_dump($_SESSION['botDomain']) ?></pre> <?php	
 			header("Refresh:0.25");
 			exit;
 		}
