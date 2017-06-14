@@ -8,6 +8,7 @@ Funcional:
   4. No início de uma partida, os países disponíveis são divididos aleatoriamente entre os jogadores. Cada país recebe 3 exércitos. 
   6. Na tela de partida, o usuário deve ver uma tabela com uma lista dos países, o dono do país (ele ou o computador) e o número de exércitos no país. 
   
+  
 To-Do:
   
   5. A cada jogada, cada jogador recebe 6 exércitos, distribuídos aleatoriamente pelo mapa. 
