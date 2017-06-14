@@ -6,13 +6,12 @@ Funcional:
   2. O sistema checa se existe uma partida em aberto para o usuário. Se sim, vai para a tela de partida; se não, cria uma partida e vai para a tela da partida. 
   3. Existem dois jogadores: o computador e o usuário. 
   4. No início de uma partida, os países disponíveis são divididos aleatoriamente entre os jogadores. Cada país recebe 3 exércitos. 
+  6. Na tela de partida, o usuário deve ver uma tabela com uma lista dos países, o dono do país (ele ou o computador) e o número de exércitos no país. 
   
 To-Do:
   
   5. A cada jogada, cada jogador recebe 6 exércitos, distribuídos aleatoriamente pelo mapa. 
-  
-  6. Na tela de partida, o usuário deve ver uma tabela com uma lista dos países, o dono do país (ele ou o computador) e o número de exércitos no país. 
-  
+
   7. Na tela de partida, o usuário deve poder selecionar um ataque, sempre com um país de origem (seu) e um país de destino (do computador). A decisão de como será a interface de seleção do ataque fica por sua conta. Deve ser levado em consideração que o país de origem do ataque deve ter fronteira com o país de destino. 
   
   8. Ao submeter o formulário, o ataque é processado. Por questão de simplicidade, a rodada é encerrada após a apuração desse ataque e, no mesmo request, o computador faz sua jogada. 
