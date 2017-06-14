@@ -136,7 +136,7 @@
 		}
 
 		public function randName() {
-		    $pdo = new PDO('mysql:host=localhost;dbname=ChuWar', 'root', '');
+		    $pdo = new PDO('mysql:host=localhost;dbname=ChuWar', DBuser, DBpassword);
  
 		    $query = 'SELECT * FROM randNames WHERE id=:id';
 		 
@@ -148,6 +148,7 @@
 
 		    return utf8_encode($names['name']);
 		}
+
 	}
 
 	

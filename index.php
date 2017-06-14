@@ -23,8 +23,9 @@
 			unset($_SESSION['domain']);
 			unset($_SESSION['botDomain']);
 			unset($_SESSION['botName']);
-			unset($_POST['username']);	
+			unset($_POST['username']);
 			unset($_POST['logoff']);
+			unset($_POST['attack']);
 			header("Refresh:0");
 		}else{
 			(new ChuWarController) -> game();
