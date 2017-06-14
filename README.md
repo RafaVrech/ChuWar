@@ -16,14 +16,16 @@ Funcional:
     
   9. Logo em seguida, estamos em uma nova rodada. É exibido para o usuário a mesma tela da partida, com os resultados dos ataques e a tela atualizada para ele poder fazer nova jogada. 
   
-To-Do:
-  
   5. A cada jogada, cada jogador recebe 6 exércitos, distribuídos aleatoriamente pelo mapa. 
-  
-  8. Ao submeter o formulário, o ataque é processado. Por questão de simplicidade, a rodada é encerrada após a apuração desse ataque e, no mesmo request, o computador faz sua jogada. 
   
   10. A apuração do resultados dos ataques deve se dar da seguinte maneira: para cada exército do país de origem é rodado um número aleatório de 0 a 10. Se o número for maior que cinco, o atacante ganha e destrói um exército do inimigo. Caso todos os exércitos inimigos sejam destruídos, o país é ocupado com 1 exército. 
   
+  12. O jogo se encerra quando um dos jogadores tiver sido destruído. 
+  
+To-Do:
+  
+  8. Ao submeter o formulário, o ataque é processado. Por questão de simplicidade, a rodada é encerrada após a apuração desse ataque e, no mesmo request, o computador faz sua jogada. 
+   
   11. O computador vai sempre fazer o ataque em que tenha a maior vantagem em número de exércitos do país de origem sobre o país de destino. Por exemplo, se ele tiver a possibilidade de atacar de um país de 10 sobre um país com 5 exércitos, versus a possibilidade de atacar de um país de 8 sobre um de 1, ele vai escolher a segunda opção. 
   
-  12. O jogo se encerra quando um dos jogadores tiver sido destruído. 
+  
