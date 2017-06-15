@@ -7,11 +7,14 @@
 
 	if(!isset($_SESSION['username'])){
 		if(!isset($_POST['newuser'])){
-			if(isset($_POST['username'])) {
+			if(isset($_POST['username']) && $_POST['username'] != '') {
 		    	(new loginController) -> login();
 		    	header("Refresh:0");
 		    }else{
 				(new LoginView) -> output();
+				if(isset($_POST['username']) && $_POST['username'] == ''){
+					echo "Falha no login";
+				}
 			}
 		}else{
 			(new loginController) -> register();
@@ -25,7 +28,8 @@
 			unset($_SESSION['botName']);
 			unset($_POST['username']);
 			unset($_POST['logoff']);
-			unset($_POST['attack']);
+			unset($_POST['attacking']);
+			unset($_POST['receiving']);
 			header("Refresh:0");
 		}else{
 			(new ChuWarController) -> game();

@@ -2,7 +2,8 @@
 	class ChuWarView{
 		public function output($playerDomain,$botDomain,$paises){
 
-			echo'<body onload="populateReceiving()">
+			# Tabela de países do jogador
+			echo'
 			<div style="display: inline-block;">
 				<table>
 					<caption>"'.$_SESSION['username'].'"</caption>
@@ -16,6 +17,8 @@
 							<td>'.$value.'</td>
 						</tr>';
 					}
+
+			# Tabela de países do computador
 			echo'
 				</table>
 			</div>
@@ -36,91 +39,57 @@
 			echo'
 				</table>
 			</div>
+			';
 
-			<center>
-				<form action="" method="post" >
-					<select name="attacking" id="attackingDL" onchange="populateReceiving()">';
-						foreach($playerDomain as $key => $value){
-					  		echo'<option value="'.$key.'">'.$key.'</option>';
-						}
-		  			echo'
-					</select>
-					<p id="message"></p>
-					<select name="receiving" id="receivingDL">
+			# Menu de seleção de ataque
+			echo'
+			<center style="margin-top:10%">
+				<form method="post" >
 
+					<select name="attack" id="attackingDL" required>
 					</select>
+
+
 			 		<button type="submit" >Atacar!</button>
+					<p id="message"></p>
 				</form>
 
+
+				<form method="post">
+			 		<button type="submit" name="logoff" value="" >Voltar ao login.</button>
+				</form>
 			</center>
+			';
 
-			<form action="" method="post">
-		 		<button type="submit" name="logoff" value="" >Voltar ao login.</button>
-			</form>
-
+			# Script
+			echo'
 			<script type="text/javascript">
-
-				var botDomain = [];
+				attacking = document.getElementById(\'attackingDL\');
 				';
-				foreach($botDomain as $key => $value){
-					echo'botDomain.push("'.$key.'");
-					';
-				}
-				echo 'var attackers = [];';
-				foreach($paises as $key => $value){
-					$pais = utf8_encode($value['pais']);
-					echo'attackers.push("'.$pais.'");
-					';
-					echo'var '.str_replace(' ','_',$pais).' = [];
-					';
-					foreach(explode(",",utf8_encode($value['fronteira'])) as $value2){
-						echo str_replace(' ','_',$pais).'.push("'.$value2.'");
-						';
+
+				foreach($playerDomain as $key => $value){
+					foreach($paises as $key2 => $value2){
+						if(utf8_encode($value2['pais']) == $key){ # Só vai rodar com os países que estão no dominio do player:
+							foreach($botDomain as $key3 => $value3){
+								foreach(explode(",",utf8_encode($value2['fronteira'])) as $value4){
+									if($key3 == $value4){	# Adiciona aos DropdownList os países que estejam no domínio do BOT e tenham fronteira com algum país
+										echo'
+										var opt = document.createElement("option");
+							      opt.value = "'.$key.','.$value4.'";
+							      opt.text = "'.$key.' => '.$value4.'";
+										attacking.appendChild(opt);
+										';
+									}
+								}
+							}
+						}
 					}
-					echo '
-					';
 				}
 				echo'
-				attacking = document.getElementById(\'attackingDL\');
-				receiving = document.getElementById(\'receivingDL\');
-				var canAttack = 0;
-				function populateReceiving() {
-					receiving.options.length = 0;
-					canAttack = 0;
-					switch (attacking.value) {
-						';
-						foreach($paises as $value){
-							$pais = utf8_encode($value['pais']);
-							echo '
-							case \''.$pais.'\':
-							for (i = 0; i < '.str_replace(' ','_',$pais).'.length; i++) {
-								botDomain.forEach(foreachBotDomain.bind(null, '.str_replace(' ','_',$pais).'[i]));
-							}
-							break;
-							';
-						}
-						echo'
-					}
-				}
 
-				function createOption(dropdown, text, value) {
-
-					var opt = document.createElement(\'option\');
-					opt.value = value;
-					opt.text = text;
-					dropdown.options.add(opt);
-				}
-
-				function foreachBotDomain(param, item, index){
-					if(item == param){
-						createOption(receiving, item, item);
-						canAttack += 1;
-					}
-					message.innerHTML = "Esse país pode atacar " + canAttack + " país(es) inimigos";
-				}
 			</script>
 			';
-			?> <pre><?php echo var_dump($_POST) ?></pre> <?php
+
 		}
 	}
 ?>
