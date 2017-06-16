@@ -1,4 +1,5 @@
-
+CREATE DATABASE IF NOT EXISTS chuwar;
+USE chuwar;
 CREATE TABLE `paises` (
   `id` int(11) NOT NULL,
   `pais` varchar(99) NOT NULL,
