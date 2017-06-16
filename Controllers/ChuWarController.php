@@ -86,7 +86,7 @@
 					//INICIALIZA OBJETOS PLAYER E BOT COM SEUS NOMES
 					$player = new playerModel($_SESSION['username'], '');
 					$botName = $ChuWarModel -> randName();
-					$bot = new botModel($botName);
+					$bot = new botModel($botName,'');
 					$bot -> nameSave($_SESSION['username'],$botName);
 					$_SESSION['botName'] = utf8_encode($botName);
 
